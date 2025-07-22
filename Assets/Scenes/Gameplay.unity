@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44215974, g: 0.49099177, b: 0.57088625, a: 1}
+  m_IndirectSpecularColor: {r: 0.4421599, g: 0.4909917, b: 0.5708866, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -448,7 +448,7 @@ Canvas:
   m_GameObject: {fileID: 50353987}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 700671709}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2550,7 +2550,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 23
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5569,9 +5569,9 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 705507995}
   - {fileID: 963194228}
   - {fileID: 700671710}
-  - {fileID: 705507995}
   - {fileID: 1546948415}
   - {fileID: 50353991}
   - {fileID: 490173432}
