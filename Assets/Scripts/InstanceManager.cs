@@ -6,9 +6,10 @@ public class InstanceManager : MonoBehaviour
 {
     public static InstanceManager Instance;
     public Upgrade upgrade;
+    public TypeWriter typeWriter;
     private void Awake()
     {
-        if(!Instance)
+        if (!Instance)
             Instance = this;
     }
 }
