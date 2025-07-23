@@ -18,7 +18,9 @@ MonoBehaviour:
     buildingLevel: 1
     buildingTotalLevel: 10
     buildingUpgradePercentage: 0
+    valueToUpgrade: 25
     buyMultiplier: 100
+    coinsToGenerateMultiplier: 2
     items:
     - icon: {fileID: 1318918210, guid: b8f454b5efd4a884fb26fd74f1bfebc0, type: 3}
       name: STROVE
@@ -37,7 +39,9 @@ MonoBehaviour:
     buildingLevel: 1
     buildingTotalLevel: 10
     buildingUpgradePercentage: 0
-    buyMultiplier: 0
+    valueToUpgrade: 25
+    buyMultiplier: 100
+    coinsToGenerateMultiplier: 0
     items:
     - icon: {fileID: 1559006791, guid: b8f454b5efd4a884fb26fd74f1bfebc0, type: 3}
       name: Armour

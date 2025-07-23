@@ -1363,6 +1363,15 @@ MonoBehaviour:
   itemData: []
   item: {fileID: 5004522576059303229, guid: a4a19fcd210f67643875be746a4ae7f3, type: 3}
   itemContent: {fileID: 295227806}
+  buildingInfo:
+    buildingID: 0
+    buildingName: 
+    buildingLevel: 0
+    buildingTotalLevel: 0
+    buildingUpgradePercentage: 0
+    valueToUpgrade: 0
+    buyMultiplier: 0
+    items: []
 --- !u!1 &483117463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2543,10 +2552,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 208.5
   field of view: 78
   orthographic: 0
-  orthographic size: 33.25
+  orthographic size: 51.85
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2570,13 +2579,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3635665, y: -0, z: -0, w: 0.93156826}
-  m_LocalPosition: {x: 14.1, y: 38.6, z: -150.4}
+  m_LocalRotation: {x: 0.48436612, y: 0.26380137, z: -0.15593112, w: 0.8194412}
+  m_LocalPosition: {x: -3.8, y: 59.4, z: -140.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 42.639, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 61.174, y: 35.69, z: 0}
 --- !u!1 &971214852
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,6 +3833,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8774935732001894479, guid: 819317484ded37e45a3f742effbead0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 819317484ded37e45a3f742effbead0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3872,9 +3885,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2013708376385591173, guid: 819317484ded37e45a3f742effbead0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1688617927700330159, guid: 819317484ded37e45a3f742effbead0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 492440804577196729, guid: 819317484ded37e45a3f742effbead0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 819317484ded37e45a3f742effbead0f, type: 3}
       propertyPath: m_Name
       value: WinterEnv
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891746525080496957, guid: 819317484ded37e45a3f742effbead0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372395167222422789, guid: 819317484ded37e45a3f742effbead0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568074375225671591, guid: 819317484ded37e45a3f742effbead0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174389741171811045, guid: 819317484ded37e45a3f742effbead0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6335250783087129314, guid: 819317484ded37e45a3f742effbead0f, type: 3}
       propertyPath: m_IsActive

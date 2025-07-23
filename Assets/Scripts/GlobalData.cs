@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GlobalData 
+public static class GlobalData
 {
-    public static int GetCoins()
+    public static float GetCoins()
     {
         if (!PlayerPrefs.HasKey("Coins"))
         {
             AddCoins(10000);
         }
 
-        return PlayerPrefs.GetInt("Coins");
+        return PlayerPrefs.GetFloat("Coins");
     }
 
-    public static void AddCoins(int amount)
+    public static void AddCoins(float amount)
     {
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + amount);
+        PlayerPrefs.SetFloat("Coins", PlayerPrefs.GetFloat("Coins") + amount);
         UIManager.Instance.SetCoinsUI();
-    }    
-    public static void DeductCoins(int amount)
+    }
+    public static void DeductCoins(float amount)
     {
-        PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + (-amount));
+        PlayerPrefs.SetFloat("Coins", PlayerPrefs.GetFloat("Coins") + (-amount));
         UIManager.Instance.SetCoinsUI();
     }
 }

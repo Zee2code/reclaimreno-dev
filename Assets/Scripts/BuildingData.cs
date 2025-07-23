@@ -15,7 +15,9 @@ public class BuidInfo
     public int buildingLevel;
     public int buildingTotalLevel;
     public float buildingUpgradePercentage;
-    public int buyMultiplier;
+    public float valueToUpgrade;
+    public float buyMultiplier;
+    public float coinsToGenerateMultiplier;
     public List<ItemData> items;
 }
 
@@ -26,5 +28,5 @@ public class ItemData
     public string name;
     [TextArea]
     public string description;
-    public int coinsToGenerate;
+    public float coinsToGenerate;
 }

@@ -22,16 +22,18 @@ public class Upgrade : MonoBehaviour
 
     public GameObject item;
     public Transform itemContent;
-    private List<GameObject> itemsList =  new List<GameObject>();
-    private BuidInfo buildingInfo;
+    private int selectedItem;
+    private List<GameObject> itemsList = new List<GameObject>();
+    public BuidInfo buildingInfo;
 
     public void SetBuildingData(BuidInfo buildInfo)
     {
         DestroyAllItem();
         buildingInfo = buildInfo;
         buildingName.text = buildInfo.buildingName;
-        buildingLevel.text = "Level "+ buildInfo.buildingLevel;
+        buildingLevel.text = "Level " + buildInfo.buildingLevel;
         buildingUpgradePercentage.text = buildInfo.buildingUpgradePercentage + " %";
+        buildingPercentage.fillAmount = buildInfo.buildingUpgradePercentage / 100f;
         itemData = buildInfo.items;
         AddItems();
         gameObject.SetActive(true);
@@ -39,7 +41,7 @@ public class Upgrade : MonoBehaviour
 
     void DestroyAllItem()
     {
-        foreach(var g in itemsList)
+        foreach (var g in itemsList)
         {
             Destroy(g);
         }
@@ -48,7 +50,7 @@ public class Upgrade : MonoBehaviour
     public void AddItems()
     {
         itemsList.Clear();
-        for (int i = 0; i < itemData.Count; i++) 
+        for (int i = 0; i < itemData.Count; i++)
         {
             GameObject itemObj = Instantiate(item, itemContent);
             itemObj.GetComponent<Image>().sprite = itemData[i].icon;
@@ -66,41 +68,64 @@ public class Upgrade : MonoBehaviour
             itemObj.transform.GetChild(0).gameObject.SetActive(false);
         }
 
-        foreach (var build in itemData)
+        for (int i = 0; i < itemData.Count; i++)
         {
-            if (build.name == buildName)
+            if (itemData[i].name == buildName)
             {
-                icon.sprite = build.icon;
-                info.text = build.description;
-                itemName.text = build.name;
-                generateCoins.text = build.coinsToGenerate + "/min";
+                selectedItem = i;
+                ItemUISetting(itemData[i]);
             }
         }
-     }
+    }
+
+    void ItemUISetting(ItemData build)
+    {
+        icon.sprite = build.icon;
+        info.text = build.description;
+        itemName.text = build.name;
+        generateCoins.text = build.coinsToGenerate + "/min";
+    }
 
     public void OnUpgradeClick()
     {
-        if(GlobalData.GetCoins()>= GetUpgradeAmount())
+        if (GlobalData.GetCoins() >= GetUpgradeAmount())
         {
             GlobalData.DeductCoins(GetUpgradeAmount());
-            buildingUpgradePercentage.text = (buildingInfo.buildingUpgradePercentage+25).ToString();
-            buildingInfo.buildingUpgradePercentage += 0.25f;
-            buildingPercentage.fillAmount = buildingInfo.buildingUpgradePercentage;
+            UgpradeBuilding();
         }
     }
 
-    public void UpdateBuilding(float percentage)
+    public void UgpradeBuilding()
     {
-        foreach (var build in GameManager.instance.BuildingData.buildings)
+        if (buildingInfo.buildingUpgradePercentage >= 100)
         {
-            if(build.buildingName == buildingName.text)
+
+            buildingInfo.buildingUpgradePercentage = 0;
+            if (buildingInfo.buildingLevel < buildingInfo.buildingTotalLevel)
             {
-                build.buildingUpgradePercentage = percentage;
+                buildingInfo.buildingLevel++;
+                for (int i = 0; i < buildingInfo.items.Count; i++)
+                {
+                    buildingInfo.items[i].coinsToGenerate *= buildingInfo.coinsToGenerateMultiplier;
+                }
+                ItemUISetting(buildingInfo.items[selectedItem]);
+                GameManager.instance.SetDataOfBuilding(buildingInfo);
+            }
+            else
+            {
+                return;
             }
         }
+        buildingInfo.buildingUpgradePercentage += buildingInfo.valueToUpgrade;
+        GameManager.instance.SetDataOfBuilding(buildingInfo);
+        buildingUpgradePercentage.text = buildingInfo.buildingUpgradePercentage + "%";
+        buildingPercentage.fillAmount = buildingInfo.buildingUpgradePercentage / 100f;
     }
 
-    public int GetUpgradeAmount()
+
+
+
+    public float GetUpgradeAmount()
     {
         return (buildingInfo.buyMultiplier * buildingInfo.buildingLevel);
     }

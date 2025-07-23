@@ -16,15 +16,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OpenUpgradePanel(int buildID)
+    public void OpenUpgradePanel(int buildingID)
     {
-       foreach(var build in BuildingData.buildings)
-       {
-            if(build.buildingID == buildID)
+        foreach (var build in BuildingData.buildings)
+        {
+            if (build.buildingID == buildingID)
             {
                 InstanceManager.Instance.upgrade.SetBuildingData(build);
             }
-       }
+        }
+    }
+
+    public BuidInfo GetDataOfBuilding(int buildingID)
+    {
+        foreach (var build in BuildingData.buildings)
+        {
+            if (build.buildingID == buildingID)
+            {
+                return build;
+            }
+        }
+        return null;
+    }
+
+    public void SetDataOfBuilding(BuidInfo buildInfo)
+    {
+        for (int i = 0; i < BuildingData.buildings.Count; i++)
+        {
+            print("Build: " + BuildingData.buildings[i].buildingID);
+            if (BuildingData.buildings[i].buildingID == buildInfo.buildingID)
+            {
+                BuildingData.buildings[i] = buildInfo;
+            }
+        }
     }
 
 }
