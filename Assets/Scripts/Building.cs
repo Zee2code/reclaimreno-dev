@@ -7,10 +7,13 @@ using UnityEngine.UI;
 public class Building : MonoBehaviour
 {
     public int buildID;
+    public GameObject tutorial;
 
     private void OnMouseDown()
     {
         print(GameManager.instance);
         GameManager.instance.OpenUpgradePanel(buildID);
+        if (tutorial)
+            tutorial.SetActive(false);
     }
 }

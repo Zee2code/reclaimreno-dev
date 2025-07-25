@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region Building
+
     public void OpenUpgradePanel(int buildingID)
     {
         foreach (var build in BuildingData.buildings)
@@ -50,5 +52,23 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region Resources
+
+    public void GatherResources(Resources resource)
+    {
+        resource.description.text = "You Got " + resource.resourceAmount + " Coins";
+        GlobalData.AddCoins(resource.resourceAmount);
+        StartCoroutine(ResourcesAddedInGame(resource.gameObject));
+    }
+    IEnumerator ResourcesAddedInGame(GameObject resource)
+    {
+        yield return new WaitForSeconds(1f);
+        resource.gameObject.SetActive(false);
+    }
+
+    #endregion
+
 
 }

@@ -19,12 +19,23 @@ public class TutorialManager : MonoBehaviour
         {
             if (i == currentStep)
             {
-                if (tutorialSteps[i].type == TutorialType.TypeWriter)
-                {
-                    InstanceManager.Instance.typeWriter.StartTypewriter(tutorialSteps[i].description);
-                    tutorialTextPanel.SetActive(true);
-                }
+                DoTutorial(tutorialSteps[i]);
             }
+        }
+    }
+
+    void DoTutorial(TutorialSteps currentTutorial)
+    {
+        switch (currentTutorial.type)
+        {
+            case TutorialType.TypeWriter:
+                InstanceManager.Instance.typeWriter.StartTypewriter(currentTutorial.description);
+                tutorialTextPanel.SetActive(true);
+                break;
+            case TutorialType.Building:
+                currentTutorial.targetBuildling.SetActive(true);
+                tutorialTextPanel.SetActive(false);
+                break;
         }
     }
 
@@ -44,11 +55,16 @@ public class TutorialManager : MonoBehaviour
 public class TutorialSteps
 {
     public int stepNo;
+    [Header("Type Writer")]
     public TutorialType type;
     public string description;
+    [Header("Building")]
+
+    public GameObject targetBuildling;
 }
 
 public enum TutorialType
 {
-    TypeWriter
+    TypeWriter,
+    Building
 }

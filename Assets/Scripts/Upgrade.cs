@@ -104,6 +104,7 @@ public class Upgrade : MonoBehaviour
             if (buildingInfo.buildingLevel < buildingInfo.buildingTotalLevel)
             {
                 buildingInfo.buildingLevel++;
+                buildingLevel.text = "Level " + buildingInfo.buildingLevel;
                 for (int i = 0; i < buildingInfo.items.Count; i++)
                 {
                     buildingInfo.items[i].coinsToGenerate *= buildingInfo.coinsToGenerateMultiplier;
